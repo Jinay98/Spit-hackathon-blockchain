@@ -10,8 +10,37 @@
 
     <script src="./node_modules/web3/dist/web3.min.js"></script>
 
+    <style>
+            #main {
+        transition: margin-left .5s;
+        padding: 16px;
+    }
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 20px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      color: #fff;
+      background-color: #0b5de2;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 9px #999;
+    }
+    
+    .button:hover {background-color: #0b387f}
+    
+    .button:active {
+      background-color: #0b387f;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+                  
+        </style>
 </head>
-<body>
+<body style="background-color:powderblue;">
     <div class="container">
 
         <h1>WorkerHead Details</h1>
@@ -30,12 +59,12 @@
 		<label for="name" class="col-lg-2 control-label">WORKER COST</label>
 		<input id="wc" type="text">
 
-        <button id="button">SUBMIT</button>
+        <button id="button" class="button">SUBMIT</button>
 
 		<!-- <button id="button">Update Instructor</button> -->
-		<button id="button1">SHOW</button>
+		<button id="button1"class="button">SHOW</button>
 
-		<button id="button2">Go TO Supplier's Forum</button>
+		<button id="button2"class="button">Go TO Supplier's Forum</button>
 
 
 
