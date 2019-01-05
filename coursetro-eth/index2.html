@@ -9,45 +9,101 @@
     <link rel="stylesheet" type="text/css" href="main.css">
 
     <script src="./node_modules/web3/dist/web3.min.js"></script>
-
+    <style>
+            #main {
+        transition: margin-left .5s;
+        padding: 16px;
+    }
+                .button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 20px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      color: #fff;
+      background-color: #0b5de2;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 9px #999;
+    }
+    
+    .button:hover {background-color: #0b387f}
+    
+    .button:active {
+      background-color: #0b387f;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+                  
+        </style>
 </head>
-<body>
+<body style="background-color:powderblue;">
     <div class="container">
-
-        <h1>Supplier Details</h1>
-
-        <h2 id="instructor"></h2>
-
-		<label for="name" class="col-lg-2 control-label">Id</label>
-        <input id="id1" type="number">
+            <div id="main">
+                    <div class="container">
+                                <div class="container" align="center">
+                                    <h2 style="font-size: 35px">Supplier Details</h2>
+                                    
+                                </div>
+                        <br>
+        
+        <div class="col-sm-10"><h2 id="instructor"></h2></div>
+        
+        <div class="col-sm-10">
+                <label for="name" class="col-lg-2 control-label"style="font-size:25px">Id</label>
+                <input id="id1" type="number"style="font-size: 18px">
+                <br><br>
+        </div>
 		
-		<label for="name" class="col-lg-2 control-label">ASPHALT</label>
-        <input id="as" type="text">
-
-        <label for="name" class="col-lg-2 control-label">SOIL</label>
-		<input id="so" type="text">
+		<div class="col-sm-10">
+                <label for="name" class="col-lg-2 control-label"style="font-size:25px">ASPHALT</label>
+                <input id="as" type="text"style="font-size: 18px">
+                <br><br>
+        </div>
 		
-		<label for="name" class="col-lg-2 control-label">GRAVEL</label>
-		<input id="gr" type="text">
+        <div class="col-sm-10">
+                <label for="name" class="col-lg-2 control-label"style="font-size:25px">SOIL</label>
+                <input id="so" type="text"style="font-size: 18px">
+                <br><br>
+        </div>
+        
+		<div class="col-sm-10">
+                <label for="name" class="col-lg-2 control-label"style="font-size:25px">GRAVEL</label>
+                <input id="gr" type="text"style="font-size: 18px">
+                <br><br>
+        </div>
 		
-		<label for="name" class="col-lg-2 control-label">CONCRETE</label>
-		<input id="co" type="text">
+		<div class="col-sm-10">
+                <label for="name" class="col-lg-2 control-label"style="font-size:25px">CONCRETE</label>
+                <input id="co" type="text"style="font-size: 18px">
+                <br><br>
+        </div>
 		
-		<label for="name" class="col-lg-2 control-label">SLATE</label>
-        <input id="sl" type="text">
+		<div class="col-sm-10">
+                <label for="name" class="col-lg-2 control-label"style="font-size:25px">SLATE</label>
+                <input id="sl" type="text"style="font-size: 18px">
+                <br><br>
+        </div>
+		
+        <div class="col-sm-10">
+                <label for="name" class="col-lg-2 control-label"style="font-size:25px">TOTAL COST</label>
+                <input id="su" type="text"style="font-size: 18px">
+                <br><br>
+        </div>
+        
 
-        <label for="name" class="col-lg-2 control-label">TOTAL COST</label>
-        <input id="su" type="text">
-
-        <button id="button">SUBMIT</button>
+        <button id="button"class="button">SUBMIT</button>
 
 		<!-- <button id="button">Update Instructor</button> -->
-		<button id="button1">SHOW</button>
+		<button id="button1"class="button">SHOW</button>
 
-		<button id="button2">PAGE</button>
+		<button id="button2"class="button">PAGE</button>
 
 
 
+    </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>

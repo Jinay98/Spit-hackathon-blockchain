@@ -9,52 +9,116 @@
     <link rel="stylesheet" type="text/css" href="main.css">
 
     <script src="./node_modules/web3/dist/web3.min.js"></script>
-
+	<style>
+            #main {
+        transition: margin-left .5s;
+        padding: 16px;
+    }
+                .button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 20px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      color: #fff;
+      background-color: #0b5de2;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 9px #999;
+    }
+    
+    .button:hover {background-color: #0b387f}
+    
+    .button:active {
+      background-color: #0b387f;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+                  
+        </style>
 </head>
-<body>
-    <div class="container">
+<body style="background-color:powderblue;">
+        <div id="main">
+				<div class="container">
+							<div class="container" align="center">
+								<h2 style="font-size: 35px">Fill Tendor Details - Contractors</h2>
+								
+							</div>
+                    <br>
 
-        <h1>Fill Tendor Details - Contractors</h1>
-
-        <h2 id="instructor"></h2>
-
-		<label for="name" class="col-lg-2 control-label">Id</label>
-        <input id="id1" type="number">
+       
+                    <div class="col-sm-10"><h2 id="instructor"></h2></div>
+        
+                    <div class="col-sm-10">
+                            <label for="name" class="col-lg-2 control-label"style="font-size:25px">ID</label>
+                            <input id="id1" type="number"style="font-size: 18px">
+                            <br><br>
+                    </div>                
 		
-		<label for="name" class="col-lg-2 control-label">TENDOR ADDRESS</label>
-        <input id="ta" type="text">
-
-        <label for="name" class="col-lg-2 control-label">CONTRACTOR ADDRESS</label>
-		<input id="ca" type="text">
+                    <div class="col-sm-10">
+                        <label for="name" class="col-lg-2 control-label"style="font-size:25px">TENDOR ADDRESS</label>
+                        <input id="ta" type="text"style="font-size: 18px">
+                        <br><br>
+                    </div>
 		
-		<label for="name" class="col-lg-2 control-label">CONTRACTOR NAME</label>
-		<input id="cn" type="text">
-		
-		<label for="name" class="col-lg-2 control-label">CONTRACTOR DETAILS</label>
-		<input id="cd" type="text">
-		
-		<label for="name" class="col-lg-2 control-label">CONTRACTOR INFO ADDRESS</label>
-        <input id="ci" type="text">
+                    <div class="col-sm-10">
+                            <label for="name" class="col-lg-2 control-label"style="font-size:25px">CONTRACTOR ADDRESS</label>
+                            <input id="ca" type="text"style="font-size: 18px">
+                            <br><br>
+                    </div>
+        
+                    <div class="col-sm-10">
+                            <label for="name" class="col-lg-2 control-label"style="font-size:25px">CONTRACTOR NAME</label>
+                            <input id="cn" type="text"style="font-size: 18px">
+                            <br><br>
+                    </div>
+                    <div class="col-sm-10">
+                            <label for="name" class="col-lg-2 control-label"style="font-size:25px">CONTRACTOR DETAILS</label>
+                            <input id="cd" type="text"style="font-size: 18px">
+                            <br><br>
+                    </div>
+                    <div class="col-sm-10">
+                            <label for="name" class="col-lg-2 control-label"style="font-size:25px">CONTRACTOR INFO ADDRESS</label>
+                            <input id="ci" type="text"style="font-size: 18px">
+                            <br><br>
+                    </div>
+                    <div class="col-sm-10">
+                            <label for="name" class="col-lg-2 control-label"style="font-size:25px">ROAD TOTAL COST</label>
+                            <input id="rc" type="text"style="font-size: 18px">
+                            <br><br>
+                    </div>
+                    <div class="col-sm-10">
+                            <label for="name" class="col-lg-2 control-label"style="font-size:25px">ROAD CONSTRUCTION TIME REQUIRED</label>
+                            <input id="rt" type="text"style="font-size: 18px">
+                            <br><br>
+                    </div>
+                    <div class="col-sm-10">
+                            <label for="name" class="col-lg-2 control-label"style="font-size:25px">CONTRACTOR REPUTATION</label>
+                            <input id="cr" type="text"style="font-size: 18px">
+                            <br><br>
+                    </div>
+                    
 
-        <label for="name" class="col-lg-2 control-label">ROAD TOTAL COST</label>
-        <input id="rc" type="text">
+        
 
-        <label for="name" class="col-lg-2 control-label">ROAD CONSTRUCTION TIME REQUIRED</label>
-        <input id="rt" type="text">
+        
 
-        <label for="name" class="col-lg-2 control-label">CONTRACTOR REPUTATION</label>
-        <input id="cr" type="text">
+        
 
-        <button id="button">SUBMIT</button>
+        <button id="button"class="button">SUBMIT</button>
 
 		<!-- <button id="button">Update Instructor</button> -->
-		<button id="button1">SHOW</button>
+		<button id="button1"class="button">SHOW</button>
 
-		<button id="button2">Go TO Supplier's Forum</button>
+		<button id="button2"class="button">Go TO Supplier's Forum</button>
 
 
 
     </div>
+    </div>
+    
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
