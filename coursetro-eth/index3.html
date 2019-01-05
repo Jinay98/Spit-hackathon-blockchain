@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <script src="./node_modules/web3/dist/web3.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+
+        <h1>WorkerHead Details</h1>
+
+        <h2 id="instructor"></h2>
+
+		<label for="name" class="col-lg-2 control-label">WORKER Id</label>
+        <input id="id1" type="number">
+		
+		<label for="name" class="col-lg-2 control-label">WORKER NAME</label>
+        <input id="name" type="text">
+
+        <label for="name" class="col-lg-2 control-label">WORKER DETAIL</label>
+		<input id="de" type="text">
+		
+		<label for="name" class="col-lg-2 control-label">WORKER COST</label>
+		<input id="wc" type="text">
+
+        <button id="button">SUBMIT</button>
+
+		<!-- <button id="button">Update Instructor</button> -->
+		<button id="button1">SHOW</button>
+
+		<button id="button2">Go TO Supplier's Forum</button>
+
+
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+    <script>
+       // Our future code here..
+	   if (typeof web3 !== 'undefined') {
+            web3 = new Web3(web3.currentProvider);
+        } else {
+            // set the provider you want from Web3.providers
+            web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+        }
+		web3.eth.defaultAccount = web3.eth.accounts[0];
+		var CoursetroContract = web3.eth.contract([
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "getTendor",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "conten",
+		"outputs": [
+			{
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"name": "tendoraddress",
+				"type": "uint256"
+			},
+			{
+				"name": "contractoraddress",
+				"type": "uint256"
+			},
+			{
+				"name": "contractorName",
+				"type": "string"
+			},
+			{
+				"name": "contractorDetails",
+				"type": "string"
+			},
+			{
+				"name": "contractorInfoAddress",
+				"type": "string"
+			},
+			{
+				"name": "roadCostCon",
+				"type": "uint256"
+			},
+			{
+				"name": "roadTimeCon",
+				"type": "uint256"
+			},
+			{
+				"name": "contractorReputation",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "countSupplier",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "getWorker",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "countTendor",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "supplier",
+		"outputs": [
+			{
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"name": "asphaltGM",
+				"type": "uint256"
+			},
+			{
+				"name": "soilGM",
+				"type": "uint256"
+			},
+			{
+				"name": "gravelGM",
+				"type": "uint256"
+			},
+			{
+				"name": "concreteGM",
+				"type": "uint256"
+			},
+			{
+				"name": "slateGM",
+				"type": "uint256"
+			},
+			{
+				"name": "SuppCost",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_id",
+				"type": "uint256"
+			},
+			{
+				"name": "_tendoraddress",
+				"type": "uint256"
+			},
+			{
+				"name": "_contractoraddress",
+				"type": "uint256"
+			},
+			{
+				"name": "_contractorName",
+				"type": "string"
+			},
+			{
+				"name": "_contractorDetails",
+				"type": "string"
+			},
+			{
+				"name": "_contractorInfoAddress",
+				"type": "string"
+			},
+			{
+				"name": "_roadTimeCon",
+				"type": "uint256"
+			},
+			{
+				"name": "_roadCostCon",
+				"type": "uint256"
+			},
+			{
+				"name": "_contractorReputation",
+				"type": "uint256"
+			}
+		],
+		"name": "fillTendor",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "countWorker",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "worker",
+		"outputs": [
+			{
+				"name": "workerId",
+				"type": "uint256"
+			},
+			{
+				"name": "workerName",
+				"type": "string"
+			},
+			{
+				"name": "workerDetail",
+				"type": "string"
+			},
+			{
+				"name": "workerCost",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_id",
+				"type": "uint256"
+			},
+			{
+				"name": "_workerName",
+				"type": "string"
+			},
+			{
+				"name": "_workerDetail",
+				"type": "string"
+			},
+			{
+				"name": "_workerCost",
+				"type": "uint256"
+			}
+		],
+		"name": "setWorker",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "tendor",
+		"outputs": [
+			{
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"name": "roadTendorTitle",
+				"type": "string"
+			},
+			{
+				"name": "roadLoc",
+				"type": "string"
+			},
+			{
+				"name": "roadCost",
+				"type": "uint256"
+			},
+			{
+				"name": "roadMinTime",
+				"type": "uint256"
+			},
+			{
+				"name": "roadMaxTime",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "winner",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "getSupplier",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_id",
+				"type": "uint256"
+			},
+			{
+				"name": "_roadTendorTitle",
+				"type": "string"
+			},
+			{
+				"name": "_roadLoc",
+				"type": "string"
+			},
+			{
+				"name": "_roadCost",
+				"type": "uint256"
+			},
+			{
+				"name": "_roadMinTime",
+				"type": "uint256"
+			},
+			{
+				"name": "_roadMaxTime",
+				"type": "uint256"
+			}
+		],
+		"name": "setTendor",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_id",
+				"type": "uint256"
+			},
+			{
+				"name": "_asphaltGM",
+				"type": "uint256"
+			},
+			{
+				"name": "_soilGM",
+				"type": "uint256"
+			},
+			{
+				"name": "_gravelGM",
+				"type": "uint256"
+			},
+			{
+				"name": "_concreteGM",
+				"type": "uint256"
+			},
+			{
+				"name": "_slateGM",
+				"type": "uint256"
+			},
+			{
+				"name": "_SuppCost",
+				"type": "uint256"
+			}
+		],
+		"name": "setSupp",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	}
+]);
+var Coursetro = CoursetroContract.at('0x5243e463a3266f823bb9191325e2b8a7b75dea07');
+console.log(Coursetro);
+
+
+
+
+        
+
+		$("#button1").click(function() {
+		Coursetro.getWorker(0,function(error, result){
+            if(!error)
+                {
+                    $("#instructor").html(result[0]+' ('+result[1]+' years old)'+' Mint='+result[2]+' maxt = '+result[3]+' dos = '+result[4]);
+                    console.log(result);
+                }
+            else
+                console.error(error);
+        });
+
+		});
+
+        $("#button").click(function() {
+
+			
+            Coursetro.setWorkers($("#id1").val(), $("#name").val(),$("#de").val(), $("#wc").val(),{from: web3.eth.accounts[1], gas:3000000});
+			balance = web3.eth.getBalance('0x6c55a8cf0d364d4487b59694482a6fc2e4fa7a83');
+			console.log("balance is = "+balance);
+		});
+		
+		$("#button2").click(function() {
+			window.location.href = "index4.html";
+
+			
+		});
+
+    </script>
+
+</body>
+</html>

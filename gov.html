@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script>
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+                document.getElementById("main").style.marginLeft = "250px";
+                document.body.style.backgroundColor = "#84CEEB";
+            }
+            
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+                document.getElementById("main").style.marginLeft= "0";
+                document.body.style.backgroundColor = "#84CEEB";
+            }
+			
+			
+			
+			
+			
+            </script>
+			
+			<script>
+       // Our future code here..
+	   if (typeof web3 !== 'undefined') {
+            web3 = new Web3(web3.currentProvider);
+        } else {
+            // set the provider you want from Web3.providers
+            web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+        }
+		web3.eth.defaultAccount = web3.eth.accounts[0];
+		var CoursetroContract = web3.eth.contract([
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_RoadLoc",
+				"type": "string"
+			},
+			{
+				"name": "_roadcost",
+				"type": "uint256"
+			},
+			{
+				"name": "_roadMinTime",
+				"type": "uint256"
+			},
+			{
+				"name": "_roadMaxTime",
+				"type": "uint256"
+			},
+			{
+				"name": "_dosTendorApp",
+				"type": "uint256"
+			}
+		],
+		"name": "setInstructor",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getInstructor",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]);
+var Coursetro = CoursetroContract.at('0x13bcc35eeed71b8e22a1f86dd449839dcf7abb03');
+console.log(Coursetro);
+
+
+
+
+        
+
+		$("#button1").click(function() {
+		Coursetro.getInstructor(function(error, result){
+            if(!error)
+                {
+                    $("#instructor").html(result[0]+' ('+result[1]+' years old)'+' Mint='+result[2]+' maxt = '+result[3]+' dos = '+result[4]);
+                    console.log(result);
+                }
+            else
+                console.error(error);
+        });
+
+		});
+
+        $("#button").click(function() {
+
+			
+            Coursetro.setInstructor($("#name").val(), $("#age").val(), $("#mint").val(), $("#maxt").val(), $("#dos").val(),{from: web3.eth.accounts[1], gas:3000000});
+			balance = web3.eth.getBalance('0x13bcc35eeed71b8e22a1f86dd449839dcf7abb03');
+			console.log("balance is = "+balance);
+        });
+
+    </script>
+        <style>
+            body {
+                background-color: #84CEEB;
+        }
+            .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #374785;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+        
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #f1f1f1;
+            display: block;
+            transition: 0.3s;
+        }
+        
+        .sidenav a:hover {
+            color: #0b5de2;
+        }
+        
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+        #main {
+            transition: margin-left .5s;
+            padding: 16px;
+        }
+            @media screen and (max-height: 450px) {
+          .sidenav {padding-top: 15px;}
+          .sidenav a {font-size: 18px;}
+        }
+        </style>
+        
+    <body>
+	<h2 id="instructor"></h2>
+	
+	
+	
+        <div id="mySidenav" class="sidenav" style="z-index: 2">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+          
+            <a href="/accounts/">Home</a>
+              <a href="http://localhost:8000/accounts/profile">My Profile</a>
+              <a href="http://localhost:8000/accounts/profile/edit">Edit Profile</a>
+              <a href="http://localhost:8000/accounts/request">Request Item</a>
+              <a href="/admin">Administrator</a>
+              <a href="http://www.spit.ac.in/about/">About us</a>
+            <a href="/accounts/logout">Logout</a>
+          </div>
+          
+              <nav class="navbar navbar-inverse" style="z-index: 0;background-color: #374785;background: #374785;border-color:#374785 ">
+            <div class="container-fluid">
+              <div class="navbar-header">
+            </div>
+              </div>
+          
+              <ul class="nav navbar-nav">
+                       <li class="active"> <span style="font-size:25px;cursor:pointer;color: #f1f1f1;z-index: 0" onclick="openNav()">&#9776; Lost & Found</span></li>
+                <li ><a href="/accounts/" style="color: #f1f1f1">Home</a></li>
+                  <li><a href="accounts/login" style="color: #f1f1f1">Login</a></li>
+                  <li class="active"><a href="http://localhost:8000/accounts/profile" style="background-color: #0b5de2">My Profile</a></li>
+                  <li><a href="http://localhost:8000/accounts/profile/edit" style="color: #f1f1f1">Edit Profile</a></li>
+                  <li><a href="http://localhost:8000/accounts/request" style="color: #f1f1f1">Request Item</a></li>
+                  <li><a href="/admin" style="color: #f1f1f1">Administrator</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="/accounts/register" style="color: #f1f1f1"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="accounts/logout" style="color: #f1f1f1"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+              </ul>
+            </div>
+          </nav>
+
+
+          <div id="main">
+              <div class="container">
+                          <div class="container" align="center">
+                              <h2>Government's Portal </h2>
+                              <p style="font-size: 35px"><b>Tendor Details</b></p>
+                          </div>
+                  <br>
+                  <div class="form-group">
+                  <br><br><br><br>
+               
+            </div>
+            <div class="form-group">
+                <br><br><br><br>
+             <b><label class="control-label col-sm-2" for="name" style="font-size:25px">Road Location:</label></b>
+        
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" placeholder="Road Location"name="rl" value="" style="font-size: 18px" >
+                  <br><br>
+              </div>
+            </div>
+            <div class="form-group">
+                <br><br><br><br>
+             <b><label class="control-label col-sm-2" for="name" style="font-size:25px">Road Cost:</label></b>
+        
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="age" placeholder="Road Cost"name="rc" value="" style="font-size: 18px" >
+                  <br><br>
+              </div>
+            </div>
+            <div class="form-group">
+                <br><br><br><br>
+             <b><label class="control-label col-sm-2" for="name" style="font-size:25px">Road Min Time:</label></b>
+        
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="mint" placeholder="Road Min Time"name="rmin" value="" style="font-size: 18px" >
+                  <br><br>
+              </div>
+            </div>
+            <div class="form-group">
+                <br><br><br><br>
+             <b><label class="control-label col-sm-2" for="name" style="font-size:25px">Road Max Time:</label></b>
+        
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="maxt" placeholder="Road Max Time"name="rmax" value="" style="font-size: 18px" >
+                  <br><br>
+              </div>
+            </div>
+            <div class="form-group">
+                <br><br><br><br>
+             <b><label class="control-label col-sm-2" for="name" style="font-size:25px">Dos Tendor App:</label></b>
+        
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="dos" placeholder="Dos Tendor App"name="rc" value="" style="font-size: 18px" >
+                  <br><br>
+              </div>
+            </div>
+			 <button id="button">Update Instructor</button>
+
+		<!-- <button id="button">Update Instructor</button> -->
+		<button id="button1">Get Instructor</button>
+    </body>
+</html>
