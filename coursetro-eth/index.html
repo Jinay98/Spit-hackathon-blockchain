@@ -103,10 +103,15 @@
 
         <button class="button"id="button">SUBMIT</button>
 
-		<!-- <button id="button">Update Instructor</button> -->
-		<button class="button" id="button1">SHOW</button>
+		<!-- <button id="button">Update Instructor</button> 
+		<button class="button" id="button1"></button>-->
 
-		<button class="button" id="button2">Go TO Supplier's Forum</button>
+		<button class="button" id="button2">GO BACK</button>
+
+		<br>
+		<button class="button" id="button3">SHOW WINNER</button>
+
+		<h1 id="finalvalue"></h1>
 
 
 
@@ -127,6 +132,43 @@
         }
 		web3.eth.defaultAccount = web3.eth.accounts[0];
 		var CoursetroContract = web3.eth.contract([
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getBolTen",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "winner",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
 	{
 		"constant": true,
 		"inputs": [
@@ -156,6 +198,158 @@
 			{
 				"name": "",
 				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "kycworker",
+		"outputs": [
+			{
+				"name": "worker",
+				"type": "uint256"
+			},
+			{
+				"name": "ipfs",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_uint",
+				"type": "uint256"
+			}
+		],
+		"name": "setTendorBolEndSuccess",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "getKYCWorker",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getBolSupp",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "getKYCContractor",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getBolCon",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_uint",
+				"type": "uint256"
+			},
+			{
+				"name": "_string",
+				"type": "string"
+			}
+		],
+		"name": "setKYCContractor",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "kyccontractor",
+		"outputs": [
+			{
+				"name": "contractor",
+				"type": "uint256"
+			},
+			{
+				"name": "ipfs",
+				"type": "string"
 			}
 		],
 		"payable": false,
@@ -207,6 +401,75 @@
 			{
 				"name": "contractorReputation",
 				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_uint",
+				"type": "uint256"
+			}
+		],
+		"name": "setTendorBolEndFailure",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_uint",
+				"type": "uint256"
+			},
+			{
+				"name": "_string",
+				"type": "string"
+			}
+		],
+		"name": "setKYCWorker",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getBolWor",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "getKYCSupplier",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
 			}
 		],
 		"payable": false,
@@ -469,24 +732,6 @@
 	},
 	{
 		"constant": true,
-		"inputs": [],
-		"name": "winner",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
 		"inputs": [
 			{
 				"name": "_id",
@@ -528,6 +773,24 @@
 		"constant": false,
 		"inputs": [
 			{
+				"name": "_uint",
+				"type": "uint256"
+			},
+			{
+				"name": "_string",
+				"type": "string"
+			}
+		],
+		"name": "setKYCSupplier",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
 				"name": "_id",
 				"type": "uint256"
 			},
@@ -556,6 +819,29 @@
 		"outputs": [],
 		"payable": true,
 		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "kycsupplier",
+		"outputs": [
+			{
+				"name": "supplier",
+				"type": "uint256"
+			},
+			{
+				"name": "ipfs",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -597,7 +883,7 @@
 		"type": "function"
 	}
 ]);
-var Coursetro = CoursetroContract.at('0x5243e463a3266f823bb9191325e2b8a7b75dea07');
+var Coursetro = CoursetroContract.at('0x8572778240279bb5db3c838cf0eecdae7bc32260');
 console.log(Coursetro);
 
 
@@ -605,12 +891,11 @@ console.log(Coursetro);
 
         
 
-		$("#button1").click(function() {
-		Coursetro.getTendor(0,function(error, result){
+		$("#button3").click(function() {
+		Coursetro.winner(function(error, result){
             if(!error)
                 {
-                    $("#instructor").html(result[0]+' ('+result[1]+' years old)'+' Mint='+result[2]+' maxt = '+result[3]+' dos = '+result[4]);
-                    console.log(result);
+					$("#finalvalue").html("MINIMUM COST:   "+result[0] + "  <br><br>   CONTRACTOR ID:   " + result[1]);
                 }
             else
                 console.error(error);
@@ -627,10 +912,12 @@ console.log(Coursetro);
 		});
 		
 		$("#button2").click(function() {
-			window.location.href = "index2.html";
+			window.location.href = "index5.html";
 
 			
 		});
+
+		
 
     </script>
 
